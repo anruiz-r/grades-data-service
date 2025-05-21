@@ -1,5 +1,9 @@
 package com.example.demo;
 
+import com.example.demo.repositories.CourseRepository;
+import com.example.demo.repositories.GradeRepository;
+import com.example.demo.services.CourseService;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
@@ -18,4 +22,19 @@ public class GradesDataApplication {
 		SpringApplication.run(GradesDataApplication.class, args);
 	}
 
-}
+
+	@Bean
+	CommandLineRunner run(CourseRepository courseRepository, GradeRepository gradeRepository, CourseService courseService) {
+		return args -> {
+
+//			courseRepository.save(new User(null,"Ray","Raymond",new ArrayList<>()));
+//			gradeRepository.save(new Rating(null,5,"m1"));
+//
+//
+//			courseService.addRatingToUser(1, 1);
+//
+
+		};
+	}
+
+	}
