@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -14,6 +14,6 @@ public class CourseGradeDTO {
     private Long courseCode;
     private Long studentId;
     private String studentName;
-    private String grade;
+    private int grade;
 
 }

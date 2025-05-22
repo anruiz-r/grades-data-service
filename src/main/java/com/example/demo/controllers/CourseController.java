@@ -29,7 +29,7 @@ public class CourseController {
     @GetMapping("/{courseCode}")
     @ResponseStatus(HttpStatus.OK)
     public Course getCourseInfo(@PathVariable Long courseCode) {
-        return courseService.getCourseByCode(courseCode).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Course not found"));;
+        return courseService.getCourseByCode(courseCode).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Course not found"));
     }
 
 
