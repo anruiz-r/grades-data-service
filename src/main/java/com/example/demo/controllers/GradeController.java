@@ -47,5 +47,4 @@ public class GradeController {
         return courseGradeDTOS;
     }
 
-    //es necesario la info de students??
 }

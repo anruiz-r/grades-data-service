@@ -14,7 +14,7 @@ import org.springframework.web.client.RestTemplate;
 @SpringBootApplication
 public class GradesDataApplication {
 	@Bean
-	@LoadBalanced
+
 	public RestTemplate getRestTemplate(){
 		return new RestTemplate();
 	}
@@ -22,20 +22,4 @@ public class GradesDataApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(GradesDataApplication.class, args);
 	}
-
-
-	@Bean
-	CommandLineRunner run(CourseRepository courseRepository, GradeRepository gradeRepository, CourseService courseService) {
-		return args -> {
-
-//			courseRepository.save(new User(null,"Ray","Raymond",new ArrayList<>()));
-//			gradeRepository.save(new Rating(null,5,"m1"));
-//
-//
-//			courseService.addRatingToUser(1, 1);
-//
-
-		};
-	}
-
 	}
