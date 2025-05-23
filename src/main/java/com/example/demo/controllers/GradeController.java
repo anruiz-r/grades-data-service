@@ -1,14 +1,13 @@
 package com.example.demo.controllers;
 
+import com.example.demo.client.StudentClient;
 import com.example.demo.dto.CourseGradeDTO;
 import com.example.demo.dto.StudentInfoDTO;
 import com.example.demo.models.Grade;
 import com.example.demo.repositories.GradeRepository;
-import com.example.demo.services.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
@@ -19,10 +18,10 @@ import java.util.List;
 public class GradeController {
 
     @Autowired
-    private RestTemplate restTemplate;
+    StudentClient studentClient;
 
     @Autowired
-    private GradeRepository gradeRepository;
+    GradeRepository gradeRepository;
 
 
     @GetMapping
@@ -39,12 +38,10 @@ public class GradeController {
         }
         List<CourseGradeDTO> courseGradeDTOS = new ArrayList<>();;
         for (Grade grade : grades) {
-            StudentInfoDTO studentInfo = restTemplate.getForObject("http://localhost:8082/api/students/" + grade.getStudentId(), StudentInfoDTO.class);
-            System.out.println(studentInfo);
+            StudentInfoDTO studentInfo = studentClient.getStudentById(grade.getStudentId());
             CourseGradeDTO courseGrade = new CourseGradeDTO(courseCode, grade.getStudentId(), studentInfo.getName(), grade.getGrade());
             courseGradeDTOS.add(courseGrade);
         }
         return courseGradeDTOS;
     }
-
 }
